@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace OverdeRheinKraanKeuringen.Models
 {
     public class Opdracht
     {
+        [Key]
         public int opdrachtNummer { get; set; }
         public string werkIntrustie { get; set; }
         public DateTime DatumUitvoering { get; set; }
