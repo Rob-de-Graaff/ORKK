@@ -18,5 +18,7 @@ namespace OverdeRheinKraanKeuringen.Models
         public byte[] Image { get; set; }
         public int BedrijfsUren { get; set; }
         public string AflegRedenen { get; set; }
+
+        public ICollection<Kabelchecklist> Kabelchecklists { get; set; }
     }
 }
