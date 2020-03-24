@@ -16,7 +16,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-            //comment
+            //comment 2
             return View();
         }
 
