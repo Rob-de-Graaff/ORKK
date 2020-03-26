@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,5 +18,7 @@ namespace OverdeRheinKraanKeuringen.Models
         public byte[] Image { get; set; }
         public int BedrijfsUren { get; set; }
         public string AflegRedenen { get; set; }
+
+        public ICollection<Kabelchecklist> Kabelchecklists { get; set; }
     }
 }
