@@ -1,0 +1,82 @@
+﻿@model OverdeRheinKraanKeuringen.Models.Kabelchecklist
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kabelchecklist</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opdracht.WerkInstructie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opdracht.WerkInstructie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Breuk6D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Breuk6D)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Breuk30D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Breuk30D)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeschadigingBuitenzijde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeschadigingBuitenzijde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeschadigingRoestCorrosie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeschadigingRoestCorrosie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VerminderdeKabeldiameter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VerminderdeKabeldiameter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PositieMeetpunten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PositieMeetpunten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeschadigingTotaal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeschadigingTotaal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KabelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
