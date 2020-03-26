@@ -19,6 +19,7 @@ namespace OverdeRheinKraanKeuringen.Models
         public int BedrijfsUren { get; set; }
         public string AflegRedenen { get; set; }
 
+
         public ICollection<Kabelchecklist> Kabelchecklists { get; set; }
     }
 }

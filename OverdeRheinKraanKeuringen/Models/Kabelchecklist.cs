@@ -7,7 +7,7 @@ namespace OverdeRheinKraanKeuringen.Models
 {
     public class Kabelchecklist
     {
-        // test 234
+        // test
         public int KabelID { get; set; }
         public int Breuk6D { get; set; }
         public int Breuk30D { get; set; }
