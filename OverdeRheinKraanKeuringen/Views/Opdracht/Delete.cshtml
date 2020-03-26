@@ -1,0 +1,80 @@
+﻿@model OverdeRheinKraanKeuringen.Models.Opdracht
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Opdracht</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WerkInstructie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WerkInstructie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumUitvoering)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumUitvoering)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KabelLeverancier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KabelLeverancier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Waarnemingen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Waarnemingen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BedrijfsUren)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BedrijfsUren)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AflegRedenen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AflegRedenen)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

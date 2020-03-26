@@ -122,6 +122,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OpdrachtController.cs" />
+    <Compile Include="DAL\OpdrachtContext.cs" />
+    <Compile Include="DAL\OpdrachtInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,6 +271,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Opdracht\Create.cshtml" />
+    <Content Include="Views\Opdracht\Delete.cshtml" />
+    <Content Include="Views\Opdracht\Details.cshtml" />
+    <Content Include="Views\Opdracht\Edit.cshtml" />
+    <Content Include="Views\Opdracht\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
