@@ -1,0 +1,74 @@
+﻿@model OverdeRheinKraanKeuringen.Models.Opdracht
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Opdracht</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WerkInstructie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WerkInstructie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumUitvoering)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumUitvoering)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KabelLeverancier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KabelLeverancier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Waarnemingen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Waarnemingen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BedrijfsUren)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BedrijfsUren)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AflegRedenen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AflegRedenen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OpdrachtNummer }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

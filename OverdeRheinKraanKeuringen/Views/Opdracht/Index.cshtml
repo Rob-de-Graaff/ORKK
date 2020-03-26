@@ -1,0 +1,69 @@
+﻿@model IEnumerable<OverdeRheinKraanKeuringen.Models.Opdracht>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WerkInstructie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumUitvoering)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KabelLeverancier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Waarnemingen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BedrijfsUren)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AflegRedenen)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WerkInstructie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatumUitvoering)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KabelLeverancier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Waarnemingen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BedrijfsUren)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AflegRedenen)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OpdrachtNummer }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OpdrachtNummer }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OpdrachtNummer })
+        </td>
+    </tr>
+}
+
+</table>
