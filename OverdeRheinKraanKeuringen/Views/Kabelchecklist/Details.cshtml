@@ -9,72 +9,60 @@
 <div>
     <h4>Kabelchecklist</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Opdracht.WerkInstructie)
-        </dt>
+    <table id="checklist">
+        <tr>
+            <th colspan="2">Zichtbare draadbreuken</th>
+            <th>Slijtage van de buitenste kabels</th>
+            <th>Roest en corrosie</th>
+            <th>Verminderde kabeldiameter</th>
+            <th rowspan="2">Positie van de meetpunten:</th>
+            <th>Totale beoordeling</th>
+            <th>Beschadiging en vervorming</th>
+        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opdracht.WerkInstructie)
-        </dd>
+        <tr>
+            <th>Aantal lengte 6D:</th>
+            <th>Aantal lengte 30D: </th>
+            <th>Mate van beschadiging:</th>
+            <th>Mate van beschadiging:</th>
+            <th>%</th>
+            <th>Mate van beschadiging:</th>
+            <th>Type:</th>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Breuk6D)
-        </dt>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Breuk6D)</td>
+            <td>@Html.DisplayFor(model => model.Breuk30D)</td>
+            <td>@Html.DisplayFor(model => model.BeschadigingBuitenzijde)</td>
+            <td>@Html.DisplayFor(model => model.BeschadigingRoestCorrosie)</td>
+            <td>@Html.DisplayFor(model => model.VerminderdeKabeldiameter)</td>
+            <td>@Html.DisplayFor(model => model.PositieMeetpunten)</td>
+            <td>@Html.DisplayFor(model => model.BeschadigingTotaal)</td>
+            <td></td>
+        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Breuk6D)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Breuk30D)
-        </dt>
+        <td colspan="8"></td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Breuk30D)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BeschadigingBuitenzijde)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BeschadigingBuitenzijde)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BeschadigingRoestCorrosie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BeschadigingRoestCorrosie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VerminderdeKabeldiameter)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VerminderdeKabeldiameter)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PositieMeetpunten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PositieMeetpunten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BeschadigingTotaal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BeschadigingTotaal)
-        </dd>
-
-    </dl>
+        <tr>
+            <th colspan="2">Datum:</th>
+            <td colspan="2"></td>
+            <th colspan="2">Handtekening:</th>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <th colspan="2">kabelleverancier:</th>
+            <td colspan="2"></td>
+            <th colspan="2">Aantal bedrijfsuren:</th>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <th colspan="2">overige waarnemingen:</th>
+            <td colspan="2"></td>
+            <th colspan="2">Redenen voor het afleggen:</th>
+            <td colspan="2"></td>
+        </tr>
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.KabelID }) |
