@@ -122,6 +122,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KabelchecklistController.cs" />
     <Compile Include="Controllers\OpdrachtController.cs" />
     <Compile Include="DAL\OpdrachtContext.cs" />
     <Compile Include="DAL\OpdrachtInitializer.cs" />
@@ -276,6 +277,11 @@
     <Content Include="Views\Opdracht\Details.cshtml" />
     <Content Include="Views\Opdracht\Edit.cshtml" />
     <Content Include="Views\Opdracht\Index.cshtml" />
+    <Content Include="Views\Kabelchecklist\Create.cshtml" />
+    <Content Include="Views\Kabelchecklist\Delete.cshtml" />
+    <Content Include="Views\Kabelchecklist\Details.cshtml" />
+    <Content Include="Views\Kabelchecklist\Edit.cshtml" />
+    <Content Include="Views\Kabelchecklist\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

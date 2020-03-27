@@ -1,0 +1,88 @@
+﻿@model OverdeRheinKraanKeuringen.Models.Kabelchecklist
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Kabelchecklist</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opdracht.WerkInstructie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opdracht.WerkInstructie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Breuk6D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Breuk6D)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Breuk30D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Breuk30D)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeschadigingBuitenzijde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeschadigingBuitenzijde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeschadigingRoestCorrosie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeschadigingRoestCorrosie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VerminderdeKabeldiameter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VerminderdeKabeldiameter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PositieMeetpunten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PositieMeetpunten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeschadigingTotaal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeschadigingTotaal)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

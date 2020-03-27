@@ -20,6 +20,6 @@ namespace OverdeRheinKraanKeuringen.Models
         public string AflegRedenen { get; set; }
 
 
-        public ICollection<Kabelchecklist> Kabelchecklists { get; set; }
+        public virtual ICollection<Kabelchecklist> Kabelchecklists { get; set; }
     }
 }
