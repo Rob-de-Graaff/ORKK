@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - ORKK</title>
+    <title>@ViewBag.Title - OverdeRheinKraanKeuringen</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -16,13 +16,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("ORKK", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("OverdeRheinKraanKeuringen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Opdracht", "Index", "Opdracht")</li>
-                    <li>@Html.ActionLink("Kabelchecklist", "Index", "Kabelchecklist")</li>
+                    <li>@Html.ActionLink("Opdrachten", "Index", "Opdracht")</li>
+                    <li>@Html.ActionLink("Checklists", "Index", "Kabelchecklist")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
