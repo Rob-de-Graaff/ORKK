@@ -12,7 +12,7 @@ namespace OverdeRheinKraanKeuringen.DAL
         {
             var opdrachten = new List<Opdracht>
             {
-            new Opdracht{ WerkInstructie="maak", DatumUitvoering = DateTime.Parse("2002-09-01"), KabelLeverancier="Jan",Waarnemingen="",Image=new byte[] { 1, 1, 1, 1, 1, 1, 1 } ,BedrijfsUren=1,AflegRedenen=""}
+            new Opdracht{ WerkInstructie="maak", DatumUitvoering = DateTime.Parse("2002-09-01"), KabelLeverancier="Jan",Waarnemingen="",Image=new byte[] { 1, 1, 1, 1, 1, 1, 1 } ,Bedrijfsuren=1,AflegRedenen=""}
             };
             opdrachten.ForEach(s => context.Opdrachten.Add(s));
             context.SaveChanges();

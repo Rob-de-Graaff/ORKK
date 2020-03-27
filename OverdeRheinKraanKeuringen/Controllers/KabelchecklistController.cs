@@ -58,7 +58,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "WerkInstructie", kabelchecklist.Opdrachtnummer);
+            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "OpdrachtNummer", kabelchecklist.Opdrachtnummer);
             return View(kabelchecklist);
         }
 
@@ -74,7 +74,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "OpdrachtNummer", kabelchecklist.Opdrachtnummer);
+            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "WerkInstructie", kabelchecklist.Opdrachtnummer);
             return View(kabelchecklist);
         }
 
