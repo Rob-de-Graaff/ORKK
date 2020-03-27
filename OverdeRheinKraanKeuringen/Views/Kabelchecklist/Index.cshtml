@@ -35,6 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.BeschadigingTotaal)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeBeschadigingEnVervormingen)
+        </th>
         <th></th>
     </tr>
 
@@ -63,6 +66,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BeschadigingTotaal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeBeschadigingEnVervormingen)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.KabelID }) |

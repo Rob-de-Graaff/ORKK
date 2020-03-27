@@ -49,7 +49,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KabelID,Breuk6D,Breuk30D,BeschadigingBuitenzijde,BeschadigingRoestCorrosie,VerminderdeKabeldiameter,PositieMeetpunten,BeschadigingTotaal,Opdrachtnummer")] Kabelchecklist kabelchecklist)
+        public ActionResult Create([Bind(Include = "KabelID,Breuk6D,Breuk30D,BeschadigingBuitenzijde,BeschadigingRoestCorrosie,VerminderdeKabeldiameter,PositieMeetpunten,BeschadigingTotaal,TypeBeschadigingEnVervormingen,Opdrachtnummer")] Kabelchecklist kabelchecklist)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "OpdrachtNummer", kabelchecklist.Opdrachtnummer);
+            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "WerkInstructie", kabelchecklist.Opdrachtnummer);
             return View(kabelchecklist);
         }
 
@@ -74,7 +74,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "WerkInstructie", kabelchecklist.Opdrachtnummer);
+            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "OpdrachtNummer", kabelchecklist.Opdrachtnummer);
             return View(kabelchecklist);
         }
 
@@ -83,7 +83,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KabelID,Breuk6D,Breuk30D,BeschadigingBuitenzijde,BeschadigingRoestCorrosie,VerminderdeKabeldiameter,PositieMeetpunten,BeschadigingTotaal,Opdrachtnummer")] Kabelchecklist kabelchecklist)
+        public ActionResult Edit([Bind(Include = "KabelID,Breuk6D,Breuk30D,BeschadigingBuitenzijde,BeschadigingRoestCorrosie,VerminderdeKabeldiameter,PositieMeetpunten,BeschadigingTotaal,TypeBeschadigingEnVervormingen,Opdrachtnummer")] Kabelchecklist kabelchecklist)
         {
             if (ModelState.IsValid)
             {

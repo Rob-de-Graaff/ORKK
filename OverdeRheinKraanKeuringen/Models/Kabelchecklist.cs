@@ -38,6 +38,7 @@ namespace OverdeRheinKraanKeuringen.Models
             this.TypeBeschadigingEnVervormingen = kabelchecklistView.TypeBeschadigingEnVervormingen;
             this.Opdrachtnummer = kabelchecklistView.Opdrachtnummer;
         }
+
         [Key]
         public int KabelID { get; set; }
         [Display(Name = "Breuk 6D")]
@@ -59,7 +60,7 @@ namespace OverdeRheinKraanKeuringen.Models
         [Display(Name = "Beschadiging Totaal")]
         public Waarde BeschadigingTotaal { get; set; }
         [DataType(DataType.Text)]
-        [Display(Name = "Type Beschadiging En Vervormingen")]
+        [Display(Name = "Type Beschadiging en Vervormingen")]
         [StringLength(500, MinimumLength = 7)]
         public string TypeBeschadigingEnVervormingen { get; set; }
 

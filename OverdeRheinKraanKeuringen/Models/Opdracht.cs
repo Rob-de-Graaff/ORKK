@@ -31,6 +31,7 @@ namespace OverdeRheinKraanKeuringen.Models
         [StringLength(500, MinimumLength = 7)]
         public string WerkInstructie { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Datum Uitvoering")]
         public DateTime DatumUitvoering { get; set; }
         [DataType(DataType.Text)]
