@@ -16,7 +16,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.WerkInstructie)
-        </dd>   
+        </dd>
     </dl>
 
     <table id="checklist">
@@ -40,15 +40,37 @@
             <th>Type:</th>
         </tr>
 
+
+
         <tr>
-            <td>@Html.DisplayFor(model => model.Kabelchecklists)</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            @foreach (var checklist in Model.Kabelchecklists)
+            {
+                <td>
+                    @Html.DisplayFor(model => checklist.Breuk6D)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => checklist.Breuk30D)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => checklist.BeschadigingBuitenzijde)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => checklist.BeschadigingRoestCorrosie)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => checklist.VerminderdeKabeldiameter)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => checklist.PositieMeetpunten)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => checklist.BeschadigingTotaal)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => checklist.TypeBeschadigingEnVervormingen)
+                </td>
+            }
+
         </tr>
 
 
@@ -74,8 +96,11 @@
         </tr>
     </table>
 
+    
+
 </div>
 <p>
+    @Html.ActionLink("Add", "Create") |
     @Html.ActionLink("Edit", "Edit", new { id = Model.OpdrachtNummer }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
