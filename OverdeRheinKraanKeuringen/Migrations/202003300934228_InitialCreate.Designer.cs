@@ -13,7 +13,7 @@ namespace OverdeRheinKraanKeuringen.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202003300808074_InitialCreate"; }
+            get { return "202003300934228_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

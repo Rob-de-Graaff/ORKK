@@ -128,9 +128,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003300808074_InitialCreate.cs" />
-    <Compile Include="Migrations\202003300808074_InitialCreate.designer.cs">
-      <DependentUpon>202003300808074_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202003300934228_InitialCreate.cs" />
+    <Compile Include="Migrations\202003300934228_InitialCreate.designer.cs">
+      <DependentUpon>202003300934228_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Kabelchecklist.cs" />
@@ -302,8 +302,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003300808074_InitialCreate.resx">
-      <DependentUpon>202003300808074_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003300934228_InitialCreate.resx">
+      <DependentUpon>202003300934228_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
