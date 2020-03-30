@@ -129,6 +129,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003300808074_InitialCreate.cs" />
+    <Compile Include="Migrations\202003300808074_InitialCreate.designer.cs">
+      <DependentUpon>202003300808074_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Kabelchecklist.cs" />
     <Compile Include="Models\Opdracht.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -296,6 +301,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003300808074_InitialCreate.resx">
+      <DependentUpon>202003300808074_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
