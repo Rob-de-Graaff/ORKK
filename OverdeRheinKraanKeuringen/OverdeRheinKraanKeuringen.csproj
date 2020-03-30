@@ -132,6 +132,10 @@
     <Compile Include="Migrations\202003300934228_InitialCreate.designer.cs">
       <DependentUpon>202003300934228_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003301236255_noViewmodels.cs" />
+    <Compile Include="Migrations\202003301236255_noViewmodels.Designer.cs">
+      <DependentUpon>202003301236255_noViewmodels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Kabelchecklist.cs" />
     <Compile Include="Models\Opdracht.cs" />
@@ -305,6 +309,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003300934228_InitialCreate.resx">
       <DependentUpon>202003300934228_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301236255_noViewmodels.resx">
+      <DependentUpon>202003301236255_noViewmodels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

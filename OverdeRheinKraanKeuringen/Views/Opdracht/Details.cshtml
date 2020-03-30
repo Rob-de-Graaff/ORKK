@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Opdracht</h4>
+    <h4>Opdracht @Html.DisplayFor(model => model.OpdrachtNummer)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -16,57 +16,64 @@
 
         <dd>
             @Html.DisplayFor(model => model.WerkInstructie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DatumUitvoering)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatumUitvoering)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KabelLeverancier)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KabelLeverancier)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Waarnemingen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Waarnemingen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bedrijfsuren)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bedrijfsuren)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AflegRedenen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AflegRedenen)
-        </dd>
-
+        </dd>   
     </dl>
+
+    <table id="checklist">
+        <tr>
+            <th colspan="2">Zichtbare draadbreuken</th>
+            <th>Slijtage van de buitenste kabels</th>
+            <th>Roest en corrosie</th>
+            <th>Verminderde kabeldiameter</th>
+            <th rowspan="2">Positie van de meetpunten:</th>
+            <th>Totale beoordeling</th>
+            <th>Beschadiging en vervorming</th>
+        </tr>
+
+        <tr>
+            <th>Aantal lengte 6D:</th>
+            <th>Aantal lengte 30D: </th>
+            <th>Mate van beschadiging:</th>
+            <th>Mate van beschadiging:</th>
+            <th>%</th>
+            <th>Mate van beschadiging:</th>
+            <th>Type:</th>
+        </tr>
+
+        <tr>
+            <td>@Html.DisplayFor(model => model.Kabelchecklists)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+        <td colspan="8"></td>
+
+        <tr>
+            <th colspan="2">Datum:</th>
+            <td colspan="2"> @Html.DisplayFor(model => model.DatumUitvoering)</td>
+            <th colspan="2">Handtekening:</th>
+            <td colspan="2"> @Html.DisplayFor(model => model.Image)</td>
+        </tr>
+        <tr>
+            <th colspan="2">kabelleverancier:</th>
+            <td colspan="2">@Html.DisplayFor(model => model.KabelLeverancier)</td>
+            <th colspan="2">Aantal bedrijfsuren:</th>
+            <td colspan="2">@Html.DisplayFor(model => model.Bedrijfsuren)</td>
+        </tr>
+        <tr>
+            <th colspan="2">overige waarnemingen:</th>
+            <td colspan="2">@Html.DisplayFor(model => model.Waarnemingen)</td>
+            <th colspan="2">Redenen voor het afleggen:</th>
+            <td colspan="2">@Html.DisplayFor(model => model.AflegRedenen)</td>
+        </tr>
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.OpdrachtNummer }) |

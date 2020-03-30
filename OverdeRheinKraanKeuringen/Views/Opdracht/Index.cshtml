@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.WerkInstructie)
+            @Html.DisplayNameFor(model => model.OpdrachtNummer)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DatumUitvoering)
@@ -21,50 +21,32 @@
             @Html.DisplayNameFor(model => model.KabelLeverancier)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Waarnemingen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Bedrijfsuren)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AflegRedenen)
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.WerkInstructie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumUitvoering)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KabelLeverancier)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Waarnemingen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bedrijfsuren)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AflegRedenen)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OpdrachtNummer }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OpdrachtNummer }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.OpdrachtNummer })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpdrachtNummer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatumUitvoering)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KabelLeverancier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bedrijfsuren)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.OpdrachtNummer }) |
+            @Html.ActionLink("Details", "Details", new { id = item.OpdrachtNummer }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.OpdrachtNummer })
+        </td>
+    </tr>
     }
 
 </table>
