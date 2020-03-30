@@ -18,6 +18,10 @@ namespace OverdeRheinKraanKeuringen.Controllers
         // GET: Opdracht
         public ActionResult Index()
         {
+            //OpdrachtViewModel opdrachtViewModel = new OpdrachtViewModel
+            //{
+            //    Opdrachten = db.Opdrachten.ToList()
+            //};
             return View(db.Opdrachten.ToList());
         }
 
@@ -39,7 +43,8 @@ namespace OverdeRheinKraanKeuringen.Controllers
         // GET: Opdracht/Create
         public ActionResult Create()
         {
-            return View();
+            //OpdrachtViewModel opdrachtViewModel = new OpdrachtViewModel(new Opdracht());
+            return View(/*opdrachtViewModel*/);
         }
 
         // POST: Opdracht/Create
@@ -67,6 +72,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Opdracht opdracht = db.Opdrachten.Find(id);
+            //OpdrachtViewModel opdrachtViewModel = new OpdrachtViewModel(opdracht);
             if (opdracht == null)
             {
                 return HttpNotFound();

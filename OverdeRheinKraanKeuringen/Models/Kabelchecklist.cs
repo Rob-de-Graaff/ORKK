@@ -21,23 +21,23 @@ namespace OverdeRheinKraanKeuringen.Models
 
     public class Kabelchecklist
     {
-        public Kabelchecklist()
-        {
-        }
+        //public Kabelchecklist()
+        //{
+        //}
 
-        public Kabelchecklist(KabelchecklistViewModel kabelchecklistView)
-        {
-            this.KabelID = kabelchecklistView.KabelID;
-            this.Breuk6D = kabelchecklistView.Breuk6D;
-            this.Breuk30D = kabelchecklistView.Breuk30D;
-            this.BeschadigingBuitenzijde = kabelchecklistView.BeschadigingBuitenzijde;
-            this.BeschadigingRoestCorrosie = kabelchecklistView.BeschadigingRoestCorrosie;
-            this.VerminderdeKabeldiameter = kabelchecklistView.VerminderdeKabeldiameter;
-            this.PositieMeetpunten = kabelchecklistView.PositieMeetpunten;
-            this.BeschadigingTotaal = kabelchecklistView.BeschadigingTotaal;
-            this.TypeBeschadigingEnVervormingen = kabelchecklistView.TypeBeschadigingEnVervormingen;
-            this.Opdrachtnummer = kabelchecklistView.Opdrachtnummer;
-        }
+        //public Kabelchecklist(KabelchecklistViewModel kabelchecklistView)
+        //{
+        //    this.KabelID = kabelchecklistView.KabelID;
+        //    this.Breuk6D = kabelchecklistView.Breuk6D;
+        //    this.Breuk30D = kabelchecklistView.Breuk30D;
+        //    this.BeschadigingBuitenzijde = kabelchecklistView.BeschadigingBuitenzijde;
+        //    this.BeschadigingRoestCorrosie = kabelchecklistView.BeschadigingRoestCorrosie;
+        //    this.VerminderdeKabeldiameter = kabelchecklistView.VerminderdeKabeldiameter;
+        //    this.PositieMeetpunten = kabelchecklistView.PositieMeetpunten;
+        //    this.BeschadigingTotaal = kabelchecklistView.BeschadigingTotaal;
+        //    this.TypeBeschadigingEnVervormingen = kabelchecklistView.TypeBeschadigingEnVervormingen;
+        //    this.Opdrachtnummer = kabelchecklistView.Opdrachtnummer;
+        //}
 
         [Key]
         public int KabelID { get; set; }
@@ -68,22 +68,22 @@ namespace OverdeRheinKraanKeuringen.Models
         public int Opdrachtnummer { get; set; }
         public virtual Opdracht Opdracht { get; set; }
     }
-    [NotMapped]
-    public class KabelchecklistViewModel : Kabelchecklist
-    {
-        public KabelchecklistViewModel() { }
-        public KabelchecklistViewModel(Kabelchecklist kabelchecklist)
-        { 
-            this.KabelID = kabelchecklist.KabelID;
-            this.Breuk6D = kabelchecklist.Breuk6D;
-            this.Breuk30D = kabelchecklist.Breuk30D;
-            this.BeschadigingBuitenzijde = kabelchecklist.BeschadigingBuitenzijde;
-            this.BeschadigingRoestCorrosie = kabelchecklist.BeschadigingRoestCorrosie;
-            this.VerminderdeKabeldiameter = kabelchecklist.VerminderdeKabeldiameter;
-            this.PositieMeetpunten = kabelchecklist.PositieMeetpunten;
-            this.BeschadigingTotaal = kabelchecklist.BeschadigingTotaal;
-            this.TypeBeschadigingEnVervormingen = kabelchecklist.TypeBeschadigingEnVervormingen;
-            this.Opdrachtnummer = kabelchecklist.Opdrachtnummer;
-        }
-    }
+    //[NotMapped]
+    //public class KabelchecklistViewModel : Kabelchecklist
+    //{
+    //    //public KabelchecklistViewModel() { }
+    //    //public KabelchecklistViewModel(Kabelchecklist kabelchecklist)
+    //    //{ 
+    //    //    this.KabelID = kabelchecklist.KabelID;
+    //    //    this.Breuk6D = kabelchecklist.Breuk6D;
+    //    //    this.Breuk30D = kabelchecklist.Breuk30D;
+    //    //    this.BeschadigingBuitenzijde = kabelchecklist.BeschadigingBuitenzijde;
+    //    //    this.BeschadigingRoestCorrosie = kabelchecklist.BeschadigingRoestCorrosie;
+    //    //    this.VerminderdeKabeldiameter = kabelchecklist.VerminderdeKabeldiameter;
+    //    //    this.PositieMeetpunten = kabelchecklist.PositieMeetpunten;
+    //    //    this.BeschadigingTotaal = kabelchecklist.BeschadigingTotaal;
+    //    //    this.TypeBeschadigingEnVervormingen = kabelchecklist.TypeBeschadigingEnVervormingen;
+    //    //    this.Opdrachtnummer = kabelchecklist.Opdrachtnummer;
+    //    //}
+    //}
 }

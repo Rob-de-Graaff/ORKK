@@ -10,19 +10,19 @@ namespace OverdeRheinKraanKeuringen.Models
 {
     public class Opdracht
     {
-        public Opdracht() { }
+        //public Opdracht() { }
 
-        public Opdracht(OpdrachtViewModel opdrachtViewModel)
-        {
-            this.OpdrachtNummer = opdrachtViewModel.OpdrachtNummer;
-            this.WerkInstructie = opdrachtViewModel.WerkInstructie;
-            this.DatumUitvoering = opdrachtViewModel.DatumUitvoering;
-            this.KabelLeverancier = opdrachtViewModel.KabelLeverancier;
-            this.Waarnemingen = opdrachtViewModel.Waarnemingen;
-            this.Image = opdrachtViewModel.Image;
-            this.Bedrijfsuren = opdrachtViewModel.Bedrijfsuren;
-            this.AflegRedenen = opdrachtViewModel.AflegRedenen;
-        }
+        //public Opdracht(OpdrachtViewModel opdrachtViewModel)
+        //{
+        //    this.OpdrachtNummer = opdrachtViewModel.OpdrachtNummer;
+        //    this.WerkInstructie = opdrachtViewModel.WerkInstructie;
+        //    this.DatumUitvoering = opdrachtViewModel.DatumUitvoering;
+        //    this.KabelLeverancier = opdrachtViewModel.KabelLeverancier;
+        //    this.Waarnemingen = opdrachtViewModel.Waarnemingen;
+        //    this.Image = opdrachtViewModel.Image;
+        //    this.Bedrijfsuren = opdrachtViewModel.Bedrijfsuren;
+        //    this.AflegRedenen = opdrachtViewModel.AflegRedenen;
+        //}
 
         [Key]
         public int OpdrachtNummer { get; set; }
@@ -53,20 +53,22 @@ namespace OverdeRheinKraanKeuringen.Models
 
         public virtual ICollection<Kabelchecklist> Kabelchecklists { get; set; }
     }
-    [NotMapped]
-    public class OpdrachtViewModel : Opdracht
-    {
-        public OpdrachtViewModel() { }
-        public OpdrachtViewModel(Opdracht opdracht) 
-        { 
-            this.OpdrachtNummer = opdracht.OpdrachtNummer;
-            this.WerkInstructie = opdracht.WerkInstructie;
-            this.DatumUitvoering = opdracht.DatumUitvoering;
-            this.KabelLeverancier = opdracht.KabelLeverancier;
-            this.Waarnemingen = opdracht.Waarnemingen;
-            this.Image = opdracht.Image;
-            this.Bedrijfsuren = opdracht.Bedrijfsuren;
-            this.AflegRedenen =  opdracht.AflegRedenen;
-        }
-    }
+    //[NotMapped]
+    //public class OpdrachtViewModel : Opdracht
+    //{
+    //    public OpdrachtViewModel() { }
+    //    public OpdrachtViewModel(Opdracht opdracht)
+    //    {
+    //        this.OpdrachtNummer = opdracht.OpdrachtNummer;
+    //        this.WerkInstructie = opdracht.WerkInstructie;
+    //        this.DatumUitvoering = opdracht.DatumUitvoering;
+    //        this.KabelLeverancier = opdracht.KabelLeverancier;
+    //        this.Waarnemingen = opdracht.Waarnemingen;
+    //        this.Image = opdracht.Image;
+    //        this.Bedrijfsuren = opdracht.Bedrijfsuren;
+    //        this.AflegRedenen = opdracht.AflegRedenen;
+    //    }
+
+    //    public IEnumerable<Opdracht> Opdrachten { get; set; }
+    //}
 }
