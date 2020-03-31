@@ -40,11 +40,9 @@
             <th>Type:</th>
         </tr>
 
-
-
-        <tr>
-            @foreach (var checklist in Model.Kabelchecklists)
-            {
+        @foreach (var checklist in Model.Kabelchecklists)
+        {
+            <tr>
                 <td>
                     @Html.DisplayFor(model => checklist.Breuk6D)
                 </td>
@@ -69,10 +67,8 @@
                 <td>
                     @Html.DisplayFor(model => checklist.TypeBeschadigingEnVervormingen)
                 </td>
-            }
-
-        </tr>
-
+            </tr>
+        }
 
         <td colspan="8"></td>
 
@@ -96,7 +92,7 @@
         </tr>
     </table>
 
-    
+
 
 </div>
 <p>
