@@ -122,6 +122,38 @@ namespace OverdeRheinKraanKeuringen.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddChecklist(string returnUrl, int? OpdrachtNummer)
+        {
+            IEnumerable<Kabelchecklist> getChecklists = db.Kabelchecklists.ToList().Where(k => k.Opdrachtnummer == OpdrachtNummer);
+            ViewBag.returnurl = returnUrl;
+            ViewBag.OpdrachtNummer = OpdrachtNummer;
+
+            return View(getChecklists);
+        }
+
+        public ActionResult AddChecklists(int? id, string returnUrl, int? OpdrachtNummer)
+        {
+            if (id == null || OpdrachtNummer == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Kabelchecklist tempChecklist = db.Kabelchecklists.ToList().Where(s => s.KabelID == id).FirstOrDefault();
+
+            if (tempChecklist == null)
+            {
+                return HttpNotFound();
+            }
+
+            Opdracht opdracht = db.Opdrachten.Where(s => s.OpdrachtNummer == OpdrachtNummer).FirstOrDefault();
+
+            opdracht.Kabelchecklists.Add(tempChecklist);
+
+            db.Entry(opdracht).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return Redirect(returnUrl);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

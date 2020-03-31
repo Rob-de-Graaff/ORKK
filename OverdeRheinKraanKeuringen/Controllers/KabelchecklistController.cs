@@ -38,10 +38,10 @@ namespace OverdeRheinKraanKeuringen.Controllers
         }
 
         // GET: Kabelchecklist/Create
-        public ActionResult Create()
+        public ActionResult Create(int opdrachtNummer)
         {
-            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "OpdrachtNummer");
-            return View();
+            //ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "OpdrachtNummer");
+            return View(new Kabelchecklist(opdrachtNummer));
         }
 
         // POST: Kabelchecklist/Create
@@ -55,11 +55,9 @@ namespace OverdeRheinKraanKeuringen.Controllers
             {
                 db.Kabelchecklists.Add(kabelchecklist);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
-            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "WerkInstructie", kabelchecklist.Opdrachtnummer);
-            return View(kabelchecklist);
+            return RedirectToAction("Details", "Opdracht", new { id = kabelchecklist.Opdrachtnummer });
         }
 
         // GET: Kabelchecklist/Edit/5

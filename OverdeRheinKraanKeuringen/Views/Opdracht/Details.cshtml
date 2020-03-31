@@ -100,7 +100,7 @@
 
 </div>
 <p>
-    @Html.ActionLink("Add", "Create") |
+    @Html.ActionLink("Add Checklist", "Create", "Kabelchecklist", new { opdrachtNummer = Model.OpdrachtNummer }, null) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.OpdrachtNummer }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

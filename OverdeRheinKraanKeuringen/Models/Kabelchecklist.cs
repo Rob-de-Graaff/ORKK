@@ -21,9 +21,14 @@ namespace OverdeRheinKraanKeuringen.Models
 
     public class Kabelchecklist
     {
-        //public Kabelchecklist()
-        //{
-        //}
+        public Kabelchecklist()
+        {
+        }
+
+        public Kabelchecklist(int id)
+        {
+            this.Opdrachtnummer = id;
+        }
 
         //public Kabelchecklist(KabelchecklistViewModel kabelchecklistView)
         //{

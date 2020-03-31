@@ -291,6 +291,7 @@
     <Content Include="Views\Kabelchecklist\Details.cshtml" />
     <Content Include="Views\Kabelchecklist\Edit.cshtml" />
     <Content Include="Views\Kabelchecklist\Index.cshtml" />
+    <Content Include="Views\Opdracht\AddChecklist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
