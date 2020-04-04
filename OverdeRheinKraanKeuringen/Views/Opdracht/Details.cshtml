@@ -98,5 +98,6 @@
 <p>
     @Html.ActionLink("Add Checklist", "Create", "Kabelchecklist", new { opdrachtNummer = Model.OpdrachtNummer }, null) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.OpdrachtNummer }) |
+    @Html.ActionLink("Remove Checklist", "Delete", "Kabelchecklist", new { id = Model.OpdrachtNummer }, null) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -116,7 +116,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
             Kabelchecklist kabelchecklist = db.Kabelchecklists.Find(id);
             db.Kabelchecklists.Remove(kabelchecklist);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Opdracht", new { id });
         }
 
         protected override void Dispose(bool disposing)
