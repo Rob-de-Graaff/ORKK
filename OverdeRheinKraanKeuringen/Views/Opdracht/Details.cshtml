@@ -76,7 +76,7 @@
             <th colspan="2">Datum:</th>
             <td colspan="2"> @Html.DisplayFor(model => model.DatumUitvoering)</td>
             <th colspan="2">Handtekening:</th>
-            <td colspan="2"> @Html.DisplayFor(model => model.Image)</td>
+            <td colspan="2"> <img src="@Url.Action("RenderImage", new { id = Model.OpdrachtNummer})"/></td>
         </tr>
         <tr>
             <th colspan="2">kabelleverancier:</th>

@@ -125,6 +125,8 @@
     <Compile Include="Controllers\OpdrachtController.cs" />
     <Compile Include="DAL\OpdrachtContext.cs" />
     <Compile Include="DAL\OpdrachtInitializer.cs" />
+    <Compile Include="ExtensionMethods\HtmlExtension.cs" />
+    <Compile Include="ExtensionMethods\ImageExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -42,6 +42,7 @@ namespace OverdeRheinKraanKeuringen.Models
         [Display(Name = "Waarnemingen")]
         [StringLength(500, MinimumLength = 7)]
         public string Waarnemingen { get; set; }
+        //[DataType(DataType.ImageUrl)]
         [Display(Name = "Handtekening")]
         public byte[] Image { get; set; }
         [Display(Name = "Bedrijfsuren")]

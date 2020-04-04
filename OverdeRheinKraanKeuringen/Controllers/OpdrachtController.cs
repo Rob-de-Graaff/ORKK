@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using OverdeRheinKraanKeuringen.DAL;
+using OverdeRheinKraanKeuringen.ExtensionMethods;
 using OverdeRheinKraanKeuringen.Models;
 
 namespace OverdeRheinKraanKeuringen.Controllers
@@ -23,6 +27,15 @@ namespace OverdeRheinKraanKeuringen.Controllers
             //    Opdrachten = db.Opdrachten.ToList()
             //};
             return View(db.Opdrachten.ToList());
+        }
+
+        public async Task<ActionResult> RenderImage(int id)
+        {
+            Opdracht opdracht = await db.Opdrachten.FindAsync(id);
+
+            byte[] image = opdracht.Image;
+
+            return File(image, "image/png");
         }
 
         // GET: Opdracht/Details/5
@@ -54,11 +67,31 @@ namespace OverdeRheinKraanKeuringen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OpdrachtNummer,WerkInstructie,DatumUitvoering,KabelLeverancier,Waarnemingen,Image,Bedrijfsuren,AflegRedenen")] Opdracht opdracht)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Opdrachten.Add(opdracht);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    opdracht.Image = ImageExtension.ConvertImage(Request.Form["fileName"]);
+
+                    db.Opdrachten.Add(opdracht);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DataException Dex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error", new HandleErrorInfo(Dex, "Opdracht", "Create"));
+            }
+            catch (FileNotFoundException FNFex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error", new HandleErrorInfo(FNFex, "Opdracht", "Create"));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error", new HandleErrorInfo(ex, "Opdracht", "Create"));
             }
 
             return View(opdracht);
@@ -87,12 +120,34 @@ namespace OverdeRheinKraanKeuringen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OpdrachtNummer,WerkInstructie,DatumUitvoering,KabelLeverancier,Waarnemingen,Image,Bedrijfsuren,AflegRedenen")] Opdracht opdracht)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(opdracht).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    opdracht.Image = ImageExtension.ConvertImage(Request.Form["fileName"]);
+                    //opdracht.Image = ImageExtension.ConvertImage(Request.Form["ImageTextbox"]);
+                    db.Entry(opdracht).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
             }
+            catch (DataException Dex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error", new HandleErrorInfo(Dex, "Opdracht", "Edit"));
+            }
+            catch (FileNotFoundException FNFex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error", new HandleErrorInfo(FNFex, "Opdracht", "Edit"));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error", new HandleErrorInfo(ex, "Opdracht", "Edit"));
+            }
+
             return View(opdracht);
         }
 
