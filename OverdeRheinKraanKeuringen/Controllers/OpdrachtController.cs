@@ -33,9 +33,9 @@ namespace OverdeRheinKraanKeuringen.Controllers
         {
             Opdracht opdracht = await db.Opdrachten.FindAsync(id);
 
-            byte[] image = opdracht.Image;
+            byte[] imageBytes = opdracht.Image;
 
-            return File(image, "image/png");
+            return File(imageBytes, $"{ImageExtension.GetMimeTypeFromImageByteArray(imageBytes)}");
         }
 
         // GET: Opdracht/Details/5
@@ -65,33 +65,43 @@ namespace OverdeRheinKraanKeuringen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OpdrachtNummer,WerkInstructie,DatumUitvoering,KabelLeverancier,Waarnemingen,Image,Bedrijfsuren,AflegRedenen")] Opdracht opdracht)
+        public ActionResult Create([Bind(Include = "OpdrachtNummer,WerkInstructie,DatumUitvoering,KabelLeverancier,Waarnemingen,Image,Bedrijfsuren,AflegRedenen")] Opdracht opdracht, HttpPostedFileBase file)
         {
-            try
+            if (file != null && file.ContentLength > 0)
             {
-                if (ModelState.IsValid)
+                try
                 {
-                    opdracht.Image = ImageExtension.ConvertImage(Request.Form["fileName"]);
+                    if (ModelState.IsValid)
+                    {
+                        string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(file.FileName));
+                        file.SaveAs(path);
+                        opdracht.Image = ImageExtension.ConvertImage(path);
 
-                    db.Opdrachten.Add(opdracht);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                        db.Opdrachten.Add(opdracht);
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (DataException Dex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    return View("Error", new HandleErrorInfo(Dex, "Opdracht", "Create"));
+                }
+                catch (FileNotFoundException FNFex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    return View("Error", new HandleErrorInfo(FNFex, "Opdracht", "Create"));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    return View("Error", new HandleErrorInfo(ex, "Opdracht", "Create"));
                 }
             }
-            catch (DataException Dex)
+            else
             {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-                return View("Error", new HandleErrorInfo(Dex, "Opdracht", "Create"));
-            }
-            catch (FileNotFoundException FNFex)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-                return View("Error", new HandleErrorInfo(FNFex, "Opdracht", "Create"));
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-                return View("Error", new HandleErrorInfo(ex, "Opdracht", "Create"));
+                ViewBag.FileNotSpecifiedErrorMessage = "You have not specified a file.";
             }
 
             return View(opdracht);
@@ -118,34 +128,43 @@ namespace OverdeRheinKraanKeuringen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OpdrachtNummer,WerkInstructie,DatumUitvoering,KabelLeverancier,Waarnemingen,Image,Bedrijfsuren,AflegRedenen")] Opdracht opdracht)
+        public ActionResult Edit([Bind(Include = "OpdrachtNummer,WerkInstructie,DatumUitvoering,KabelLeverancier,Waarnemingen,Image,Bedrijfsuren,AflegRedenen")] Opdracht opdracht, HttpPostedFileBase file)
         {
-            try
+            if (file != null && file.ContentLength > 0)
             {
-                if (ModelState.IsValid)
+                try
                 {
-                    opdracht.Image = ImageExtension.ConvertImage(Request.Form["fileName"]);
-                    //opdracht.Image = ImageExtension.ConvertImage(Request.Form["ImageTextbox"]);
-                    db.Entry(opdracht).State = EntityState.Modified;
-                    db.SaveChanges();
+                    if (ModelState.IsValid)
+                    {
+                        string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(file.FileName));
+                        file.SaveAs(path);
+                        opdracht.Image = ImageExtension.ConvertImage(path);
 
-                    return RedirectToAction("Index");
+                        db.Entry(opdracht).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (DataException Dex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    return View("Error", new HandleErrorInfo(Dex, "Opdracht", "Edit"));
+                }
+                catch (FileNotFoundException FNFex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    return View("Error", new HandleErrorInfo(FNFex, "Opdracht", "Edit"));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    return View("Error", new HandleErrorInfo(ex, "Opdracht", "Edit"));
                 }
             }
-            catch (DataException Dex)
+            else
             {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-                return View("Error", new HandleErrorInfo(Dex, "Opdracht", "Edit"));
-            }
-            catch (FileNotFoundException FNFex)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-                return View("Error", new HandleErrorInfo(FNFex, "Opdracht", "Edit"));
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-                return View("Error", new HandleErrorInfo(ex, "Opdracht", "Edit"));
+                ViewBag.FileNotSpecifiedErrorMessage = "You have not specified a file.";
             }
 
             return View(opdracht);
@@ -177,37 +196,37 @@ namespace OverdeRheinKraanKeuringen.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AddChecklist(string returnUrl, int? OpdrachtNummer)
-        {
-            IEnumerable<Kabelchecklist> getChecklists = db.Kabelchecklists.ToList().Where(k => k.Opdrachtnummer == OpdrachtNummer);
-            ViewBag.returnurl = returnUrl;
-            ViewBag.OpdrachtNummer = OpdrachtNummer;
+        //public ActionResult AddChecklist(string returnUrl, int? OpdrachtNummer)
+        //{
+        //    IEnumerable<Kabelchecklist> getChecklists = db.Kabelchecklists.ToList().Where(k => k.Opdrachtnummer == OpdrachtNummer);
+        //    ViewBag.returnurl = returnUrl;
+        //    ViewBag.OpdrachtNummer = OpdrachtNummer;
 
-            return View(getChecklists);
-        }
+        //    return View(getChecklists);
+        //}
 
-        public ActionResult AddChecklists(int? id, string returnUrl, int? OpdrachtNummer)
-        {
-            if (id == null || OpdrachtNummer == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        //public ActionResult AddChecklists(int? id, string returnUrl, int? OpdrachtNummer)
+        //{
+        //    if (id == null || OpdrachtNummer == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
 
-            Kabelchecklist tempChecklist = db.Kabelchecklists.ToList().Where(s => s.KabelID == id).FirstOrDefault();
+        //    Kabelchecklist tempChecklist = db.Kabelchecklists.ToList().Where(s => s.KabelID == id).FirstOrDefault();
 
-            if (tempChecklist == null)
-            {
-                return HttpNotFound();
-            }
+        //    if (tempChecklist == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-            Opdracht opdracht = db.Opdrachten.Where(s => s.OpdrachtNummer == OpdrachtNummer).FirstOrDefault();
+        //    Opdracht opdracht = db.Opdrachten.Where(s => s.OpdrachtNummer == OpdrachtNummer).FirstOrDefault();
 
-            opdracht.Kabelchecklists.Add(tempChecklist);
+        //    opdracht.Kabelchecklists.Add(tempChecklist);
 
-            db.Entry(opdracht).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            return Redirect(returnUrl);
-        }
+        //    db.Entry(opdracht).State = System.Data.Entity.EntityState.Modified;
+        //    db.SaveChanges();
+        //    return Redirect(returnUrl);
+        //}
 
         protected override void Dispose(bool disposing)
         {
