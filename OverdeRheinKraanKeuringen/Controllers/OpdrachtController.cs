@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OverdeRheinKraanKeuringen.DAL;
+using OverdeRheinKraanKeuringen.ExtensionMethods;
+using OverdeRheinKraanKeuringen.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using OverdeRheinKraanKeuringen.DAL;
-using OverdeRheinKraanKeuringen.ExtensionMethods;
-using OverdeRheinKraanKeuringen.Models;
 
 namespace OverdeRheinKraanKeuringen.Controllers
 {
@@ -57,15 +55,15 @@ namespace OverdeRheinKraanKeuringen.Controllers
         public ActionResult Create()
         {
             //OpdrachtViewModel opdrachtViewModel = new OpdrachtViewModel(new Opdracht());
-            return View(/*opdrachtViewModel*/);
+            return View(new Opdracht{ WerkInstructie = "", DatumUitvoering = DateTime.Now, KabelLeverancier = "", Waarnemingen = "", Image = new byte[] { 0, 0, 0, 0, 0, 0, 0 }, Bedrijfsuren = 0, AflegRedenen = ""});
         }
 
         // POST: Opdracht/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OpdrachtNummer,WerkInstructie,DatumUitvoering,KabelLeverancier,Waarnemingen,Image,Bedrijfsuren,AflegRedenen")] Opdracht opdracht, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "WerkInstructie,DatumUitvoering,KabelLeverancier,Waarnemingen,Image,Bedrijfsuren,AflegRedenen")] Opdracht opdracht, HttpPostedFileBase file)
         {
             if (file != null && file.ContentLength > 0)
             {
@@ -124,7 +122,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
         }
 
         // POST: Opdracht/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

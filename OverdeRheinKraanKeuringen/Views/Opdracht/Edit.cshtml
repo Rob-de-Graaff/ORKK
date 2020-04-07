@@ -6,12 +6,11 @@
 
 <h2>Edit</h2>
 
-
 @using (Html.BeginForm("Edit", "Opdracht", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-                @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
+    <div class="form-horizontal">
         <h4>Opdracht</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -57,7 +56,7 @@
                 @ViewBag.FileNotSpecifiedErrorMessage
                 <!-- #region Default Code -->
                 @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })*@
                 <!-- #endregion -->
             </div>
         </div>

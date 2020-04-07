@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using OverdeRheinKraanKeuringen.DAL;
+using OverdeRheinKraanKeuringen.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using OverdeRheinKraanKeuringen.DAL;
-using OverdeRheinKraanKeuringen.Models;
 
 namespace OverdeRheinKraanKeuringen.Controllers
 {
@@ -45,7 +41,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
         }
 
         // POST: Kabelchecklist/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -77,7 +73,7 @@ namespace OverdeRheinKraanKeuringen.Controllers
         }
 
         // POST: Kabelchecklist/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
