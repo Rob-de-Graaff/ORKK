@@ -1,5 +1,7 @@
 ﻿using OverdeRheinKraanKeuringen.DAL;
 using OverdeRheinKraanKeuringen.Models;
+using System;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -45,15 +47,29 @@ namespace OverdeRheinKraanKeuringen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KabelID,Breuk6D,Breuk30D,BeschadigingBuitenzijde,BeschadigingRoestCorrosie,VerminderdeKabeldiameter,PositieMeetpunten,BeschadigingTotaal,TypeBeschadigingEnVervormingen,Opdrachtnummer")] Kabelchecklist kabelchecklist)
+        public ActionResult Create([Bind(Include = "Breuk6D,Breuk30D,BeschadigingBuitenzijde,BeschadigingRoestCorrosie,VerminderdeKabeldiameter,PositieMeetpunten,BeschadigingTotaal,TypeBeschadigingEnVervormingen,Opdrachtnummer")] Kabelchecklist kabelchecklist)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Kabelchecklists.Add(kabelchecklist);
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    db.Kabelchecklists.Add(kabelchecklist);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Opdracht", new { id = kabelchecklist.Opdrachtnummer });
+                }
+            }
+            catch (DataException Dex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error", new HandleErrorInfo(Dex, "Kabelchecklist", "Create"));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View("Error", new HandleErrorInfo(ex, "Kabelchecklist", "Create"));
             }
 
-            return RedirectToAction("Details", "Opdracht", new { id = kabelchecklist.Opdrachtnummer });
+            return View(kabelchecklist);
         }
 
         // GET: Kabelchecklist/Edit/5
@@ -68,33 +84,55 @@ namespace OverdeRheinKraanKeuringen.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "OpdrachtNummer", kabelchecklist.Opdrachtnummer);
+
+            //ViewBag.Opdrachtnummer = db.Opdrachten.ToList();
             return View(kabelchecklist);
         }
 
         // POST: Kabelchecklist/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KabelID,Breuk6D,Breuk30D,BeschadigingBuitenzijde,BeschadigingRoestCorrosie,VerminderdeKabeldiameter,PositieMeetpunten,BeschadigingTotaal,TypeBeschadigingEnVervormingen,Opdrachtnummer")] Kabelchecklist kabelchecklist)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(kabelchecklist).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.Opdrachtnummer = new SelectList(db.Opdrachten, "OpdrachtNummer", "WerkInstructie", kabelchecklist.Opdrachtnummer);
-            return View(kabelchecklist);
-        }
-
-        // GET: Kabelchecklist/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult EditPost(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Kabelchecklist kabelchecklistToUpdate = db.Kabelchecklists.Find(id);
+            if (TryUpdateModel(kabelchecklistToUpdate, "", new string[] { "Breuk6D", "Breuk30D", "BeschadigingBuitenzijde", "BeschadigingRoestCorrosie", "VerminderdeKabeldiameter", "PositieMeetpunten", "BeschadigingTotaal", "TypeBeschadigingEnVervormingen", "Opdrachtnummer" }))
+            {
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (DataException Dex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    return View("Error", new HandleErrorInfo(Dex, "Kabelchecklist", "Edit"));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    return View("Error", new HandleErrorInfo(ex, "Kabelchecklist", "Edit"));
+                }
+            }
+            
+            return View(kabelchecklistToUpdate);
+        }
+
+        // GET: Kabelchecklist/Delete/5
+        public ActionResult Delete(int? id, bool? saveChangesError = false)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
             Kabelchecklist kabelchecklist = db.Kabelchecklists.Find(id);
             if (kabelchecklist == null)
@@ -105,13 +143,21 @@ namespace OverdeRheinKraanKeuringen.Controllers
         }
 
         // POST: Kabelchecklist/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
-            Kabelchecklist kabelchecklist = db.Kabelchecklists.Find(id);
-            db.Kabelchecklists.Remove(kabelchecklist);
-            db.SaveChanges();
+            try
+            {
+                Kabelchecklist kabelchecklist = db.Kabelchecklists.Find(id);
+                db.Kabelchecklists.Remove(kabelchecklist);
+                db.SaveChanges();
+            }
+            catch (DataException)
+            {
+                return RedirectToAction("Delete", new { id, saveChangesError = true });
+            }
+
             return RedirectToAction("Details", "Opdracht", new { id });
         }
 

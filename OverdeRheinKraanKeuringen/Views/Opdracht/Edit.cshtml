@@ -53,11 +53,13 @@
             <div class="col-md-10">
                 <img src="@Url.Action("RenderImage", new { id = Model.OpdrachtNummer})" />
                 <input type="file" class="form-control" name="file" id="file" style="width: 100%;" />
-                @ViewBag.FileNotSpecifiedErrorMessage
-                <!-- #region Default Code -->
-                @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })*@
-                <!-- #endregion -->
+                <span class="text-danger">
+                    @ViewBag.FileNotSpecifiedErrorMessage
+                </span>
+                    <!-- #region Default Code -->
+                    @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })*@
+                    <!-- #endregion -->
             </div>
         </div>
 
